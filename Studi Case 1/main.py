@@ -1,9 +1,7 @@
-# ==============================================================================
-#                     IMPLEMENTASI CLASS DIAGRAM UNIVERSITAS
-# ==============================================================================
+#IMPLEMENTASI CLASS DIAGRAM UNIVERSITAS
 
 class Address:
-    """Representasi dari Alamat (Digunakan oleh Person)."""
+    "Representasi dari Alamat (Digunakan oleh Person)."
     
     def __init__(self, street: str, city: str, state: str, postalCode: int, country: str):
         self.street: str = street
@@ -13,19 +11,19 @@ class Address:
         self.country: str = country
 
     def validate(self) -> bool:
-        """Metode untuk memvalidasi alamat (placeholder)."""
+        "Metode untuk memvalidasi alamat (placeholder)."
         # Logika validasi yang sebenarnya akan lebih kompleks
         return bool(self.street and self.city and self.postalCode > 0)
 
     def outputAsLabel(self) -> str:
-        """Mengeluarkan alamat dalam format label."""
+        "Mengeluarkan alamat dalam format label."
         return f"{self.street}, {self.city}, {self.state}, {self.postalCode}, {self.country}"
     
     def __str__(self):
         return self.outputAsLabel()
 
 class Person:
-    """Class dasar (Superclass) untuk Person."""
+    "Class dasar (Superclass) untuk Person."
     
     def __init__(self, name: str, phoneNumber: str, emailAddress: str, address: Address):
         self.name: str = name
@@ -35,7 +33,7 @@ class Person:
         self.lives_at: Address = address
 
     def purchaseParkingPass(self) -> None:
-        """Metode untuk membeli izin parkir (placeholder)."""
+        "Metode untuk membeli izin parkir (placeholder)."
         print(f"[{self.name}] telah membeli izin parkir.")
 
     def __str__(self):
@@ -43,7 +41,7 @@ class Person:
                 f"Alamat: {self.lives_at}")
 
 class Student(Person):
-    """Subclass Student, mewarisi dari Person."""
+    "Subclass Student, mewarisi dari Person."
     
     def __init__(self, name: str, phoneNumber: str, emailAddress: str, address: Address, studentNumber: int, averageMark: int):
         # Memanggil konstruktor superclass
@@ -70,7 +68,7 @@ class Student(Person):
                 f"Rata-rata Nilai: {self.averageMark}")
 
 class Professor(Person):
-    """Subclass Professor, mewarisi dari Person."""
+    "Subclass Professor, mewarisi dari Person."
     
     def __init__(self, name: str, phoneNumber: str, emailAddress: str, address: Address, salary: int, staffNumber: int, yearsOfService: int, numberOfClasses: int):
         # Memanggil konstruktor superclass
@@ -108,9 +106,7 @@ class Professor(Person):
                 f"Gaji: {self.salary}, Kelas: {self.numberOfClasses}, "
                 f"Mengawasi: {supervised_count} Mahasiswa")
 
-# ==============================================================================
-#                                ENTRY POINT (main)
-# ==============================================================================
+#ENTRY POINT (main)
 
 def main():
     print("--- DEMO IMPLEMENTASI CLASS DIAGRAM SISTEM UNIVERSITAS ---")
