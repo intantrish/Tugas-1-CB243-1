@@ -1,4 +1,5 @@
-#IMPLEMENTASI CLASS DIAGRAM UNIVERSITAS
+# IMPLEMENTASI CLASS DIAGRAM UNIVERSITAS
+
 
 class Address:
     "Representasi dari Alamat (Digunakan oleh Person)."
@@ -13,7 +14,7 @@ class Address:
     def validate(self) -> bool:
         "Metode untuk memvalidasi alamat (placeholder)."
         # Logika validasi yang sebenarnya akan lebih kompleks
-        return bool(self.street and self.city and self.postalCode > 0)
+        return bool(self.street and self.city and self.postalCode> 0)
 
     def outputAsLabel(self) -> str:
         "Mengeluarkan alamat dalam format label."
@@ -33,7 +34,7 @@ class Person:
         self.lives_at: Address = address
 
     def purchaseParkingPass(self) -> None:
-        "Metode untuk membeli izin parkir (placeholder)."
+        """Metode untuk membeli izin parkir (placeholder)."""
         print(f"[{self.name}] telah membeli izin parkir.")
 
     def __str__(self):
@@ -41,7 +42,7 @@ class Person:
                 f"Alamat: {self.lives_at}")
 
 class Student(Person):
-    "Subclass Student, mewarisi dari Person."
+    """Subclass Student, mewarisi dari Person."""
     
     def __init__(self, name: str, phoneNumber: str, emailAddress: str, address: Address, studentNumber: int, averageMark: int):
         # Memanggil konstruktor superclass
@@ -68,7 +69,7 @@ class Student(Person):
                 f"Rata-rata Nilai: {self.averageMark}")
 
 class Professor(Person):
-    "Subclass Professor, mewarisi dari Person."
+    """Subclass Professor, mewarisi dari Person."""
     
     def __init__(self, name: str, phoneNumber: str, emailAddress: str, address: Address, salary: int, staffNumber: int, yearsOfService: int, numberOfClasses: int):
         # Memanggil konstruktor superclass
@@ -106,14 +107,16 @@ class Professor(Person):
                 f"Gaji: {self.salary}, Kelas: {self.numberOfClasses}, "
                 f"Mengawasi: {supervised_count} Mahasiswa")
 
+
+
 #ENTRY POINT (main)
 
 def main():
     print("--- DEMO IMPLEMENTASI CLASS DIAGRAM SISTEM UNIVERSITAS ---")
 
     # 1. Buat Objek Address
-    addr_prof = Address("123 Ilmu Street", "Bandung", "Jawa Barat", 40000, "Indonesia")
-    addr_stud = Address("456 Data Lane", "Jakarta", "DKI Jakarta", 10000, "Indonesia")
+    addr_prof = Address("Jl. Raya Puputan No.86", "Kec. Denpasar Timur", "Kota Denpasar", 80234, "Indonesia")
+    addr_stud = Address("Jl. Hayam Wuruk", "Kec. Denpasar Timur", "Kota Denpasar", 80234, "Indonesia")
     
     print("\n[A] Alamat & Validasi")
     print(f"Alamat Professor: {addr_prof.outputAsLabel()}")
@@ -121,9 +124,9 @@ def main():
 
     # 2. Buat Objek Professor (Memenuhi Asosiasi 1..5)
     prof = Professor(
-        name="Dr. Budi Santoso", 
-        phoneNumber="0811223344", 
-        emailAddress="budi.santoso@uni.ac.id", 
+        name="I NYOMAN RUDY HENDRAWAN", 
+        phoneNumber="081999359001", 
+        emailAddress="rudyhendrawan@stikom-bali.ac.id", 
         address=addr_prof,
         salary=15000000, 
         staffNumber=5001, 
@@ -133,20 +136,31 @@ def main():
 
     # 3. Buat Objek Student (Mewarisi Person)
     student1 = Student(
-        name="Ani Wijaya", 
-        phoneNumber="0855667788", 
-        emailAddress="ani.wijaya@std.uni.ac.id", 
+        name="Intan Trisna", 
+        phoneNumber="081239315588", 
+        emailAddress="intantrisnarahayu@gmail.com", 
         address=addr_stud,
         studentNumber=190101, 
         averageMark=85
-    )
-    student2 = Student("Bima Sakti", "0899887766", "bima.sakti@std.uni.ac.id", addr_stud, 190102, 72)
+        )
     student1.addSeminar("Machine Learning")
+
+    student2 = Student(
+        name="Bima Sakti", 
+        phoneNumber="0899887766", 
+        emailAddress="bima.sakti@gmail.com", 
+        address=addr_stud, 
+        studentNumber=190102, 
+        averageMark=72)
+    student2.addSeminar("Machine Learning")
+   
 
     print("\n[B] Data Person dan Mahasiswa")
     print(prof)
     print(student1)
+    print(student2)
     print(f"Seminar Ani: {student1.getSeminarsTaken()}")
+    print(f"Seminar Ani: {student2.getSeminarsTaken()}")
     print(f"Ani eligible to enroll (min 80)? {student1.isEligibleToEnroll(80)}")
     
     # 4. Demonstrasi Asosiasi Professor supervises Student
