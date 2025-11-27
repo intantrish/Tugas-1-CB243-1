@@ -9,7 +9,7 @@ class Author:
         self.birth_year: int = birth_year
 
     def get_age(self, current_year: int) -> int:
-        """Menghitung usia penulis berdasarkan tahun saat ini."""
+        "Menghitung usia penulis berdasarkan tahun saat ini."
         return current_year - self.birth_year
     
     def __str__(self):
@@ -48,7 +48,7 @@ class Book(LibraryItem):
         self.author: Author = author 
 
     def display_info(self) -> None:
-        """Menampilkan informasi buku secara lengkap (override dari LibraryItem)."""
+        "Menampilkan informasi buku secara lengkap (override dari LibraryItem)."
         print("-" * 30)
         print(f"Jenis: Buku | ID: {self.item_id}")
         print(f"Judul: {self.title}")
@@ -68,7 +68,7 @@ class LibraryMember:
         self.borrowed_items: list[LibraryItem] = [] 
 
     def borrow_item(self, item: LibraryItem) -> None:
-        """Anggota meminjam sebuah item."""
+        "Anggota meminjam sebuah item."
         if item not in self.borrowed_items:
             self.borrowed_items.append(item)
             print(f"-> {self.name} berhasil meminjam '{item.title}'")
