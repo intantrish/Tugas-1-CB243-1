@@ -24,12 +24,12 @@ class LibraryItem:
         self.late_fee_per_day = 5000 # Contoh denda per hari (Rp 5000)
 
     def display_info(self) -> None:
-        """Menampilkan informasi dasar item (abstrak)."""
+        "Menampilkan informasi dasar item (abstrak)."
         # Metode ini akan di-override di subclass, tapi didefinisikan di sini
         print(f"ID Item: {self.item_id}, Judul: {self.title}")
 
     def calculate_late_fee(self, days_late: int) -> float:
-        """Menghitung denda keterlambatan."""
+        "Menghitung denda keterlambatan."
         if days_late <= 0:
             return 0.0
         return float(days_late * self.late_fee_per_day)
